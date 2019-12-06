@@ -5,9 +5,9 @@ import datetime
 
 
 class Command(BaseCommand):
-    def add_arguments(self,parser):
-        parser.add_argument('file_path', nargs='+', type=str,
-                help='path of the csv file')
+    def add_arguments(self, parser):
+        parser.add_argument('file_path', nargs=1, type=str, help='Path of data file')
+
     def handle(self, *args, **options):
         path = options['file_path'][0]
 

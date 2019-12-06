@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<title>Home</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</html>
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+		<th scope="col"></th>
+		<th scope="col"></th>
+                <th scope="col">USID </th>
+                <th scope="col">Coordinate</th>
+                <th scope="col">Shift</th>
+                <th scope="col">Date</th>
+                <th scope="col">Age</th>
+                <th scope="col">Primary Fur Color </th>
+                <th scope="col">Location</th>
+                <th scope="col">Specific Location </th>
+                <th scope="col">Running</th>
+                <th scope="col">Chasin</th>
+                <th scope="col">Climbing</th>
+                <th scope="col">Eating</th>
+                <th scope="col">Foraging</th>
+                <th scope="col">Other Activities</th>
+                <th scope="col">Kuks</th>
+                <th scope="col">Quaas</th>
+                <th scope="col">Moans</th>
+                <th scope="col">Tail flags</th>
+                <th scope="col">Tail twitches</th>
+                <th scope="col">Approaches</th>
+                <th scope="col">Indifferent</th>
+                <th scope="col">Runs from</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for squirrel in squirrels %}
+	    <tr>
+	    <td><i class='fa fa-edit' aria-hidden='true'></i></td>
+	    <td><i class='fa fa-plus' aria-hidden='true'></i></td>
+            <td>{{squirrel.unique_squirrel_id}}</td>
+	    <td>({{squirrel.latitude}}, {{squirrel.longitude}})</td>
+            <td>{{squirrel.shift}}</td>
+            <td>{{squirrel.date}}</td>
+            <td>{{squirrel.age}}</td>
+            <td>{{squirrel.primary_fur_color}}</td>
+            <td>{{squirrel.location}}</td>
+            <td>{{squirrel.specific_location}}</td>
+            <td>{{squirrel.running}}</td>
+            <td>{{squirrel.chasing}}</td>
+            <td>{{squirrel.climbing}}</td>
+            <td>{{squirrel.eating}}</td>
+            <td>{{squirrel.foraging}}</td>
+            <td>{{squirrel.other_activities}}</td>
+            <td>{{squirrel.kuks}}</td>
+            <td>{{squirrel.quaas}}</td>
+            <td>{{squirrel.moans}}</td>
+            <td>{{squirrel.tail_flags}}</td>
+            <td>{{squirrel.tail_twitches}}</td>
+            <td>{{squirrel.approaches}}</td>
+            <td>{{squirrel.indifferent}}</td>
+            <td>{{squirrel.runs_from}}</td>
+	    </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</table>
