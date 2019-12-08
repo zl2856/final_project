@@ -1,29 +1,19 @@
 $('#main-table').on('click', '.fa.fa-plus', function() {
 	const row = $(this).parent().parent();
 	const usid = row.find('.usid-td').html();
-	//
-	// clear all aux row
 	$(".aux-row").remove();
 	
-	// 
-	// extract args
-	const form = {
-		usid: "",
-		coor: "",
-		shift: "",
-		date: "",
-
-	}
-
-	//
-	// 
-	row.after(createAuxRow(createForm(null, false)));
+	row.after(createAuxRow(createForm(false)));
 });
 
 
 $('#main-table').on('click', '.fa.fa-edit', function() {
-	const row = $(this).parent().parent().parent();
-	const args = extractArgFromRow();
+	const row = $(this).parent().parent();
+	const args = extractArgFromRow(row);
+	$(".aux-row").remove();
+	row.after("<tr><h3>Hello</h3></tr>");
+	row.after(createAuxRow(createForm(true)));
+	fillForm(args);
 });
 
 $('#main-table').on('click', '.add-btn', function() {
@@ -40,9 +30,33 @@ $('#main-table').on('click', '.add-btn', function() {
             		success: function(res){
 					console.log(res);
                 		if (res.success) {
-					row.after(createSuccessRow());
-					row.after(createRow(args));
-					row.remove();
+					row.after(createSuccessRow("Congratulations! New record is added!"));
+                			location.reload();
+				}
+            		}
+		});
+	} catch (error) {
+		console.log(error);
+	}
+});
+
+
+$('#main-table').on('click', '.update-btn', function() {
+	const row = $(this).parent().parent().parent();
+	const args = extractArgFromForm();
+	try {
+		resolveCSRF();
+		$.ajax({
+           		type: "POST",
+            		url: "/sightings/" + args.unique_squirrel_id,
+            		data: adaptArg(args),
+            		contentType: "application/x-www-form-urlencoded; charset=utf-8",
+            		dataType: "json",
+            		success: function(res){
+					console.log(res);
+                		if (res.success) {
+					row.after(createSuccessRow("Congradulations! Record is updated!"));
+					location.reload();
                 		}
             		}
 		});
@@ -50,6 +64,11 @@ $('#main-table').on('click', '.add-btn', function() {
 		console.log(error);
 	}
 });
+
+$('#main-table').on('click', '.cancel-btn', function() {
+	const row = $(this).parent().parent().parent();
+	row.remove();
+})
 
 
 function resolveCSRF() {
@@ -84,7 +103,7 @@ function adaptArg(args) {
 function extractArgFromRow(row) {
 	return {
 		unique_squirrel_id : row.find('.usid-td').html(),
-		latitude : row.find('.coord-td span').eq(0).html(),
+		latitude : row.find('.coor-td span').eq(0).html(),
 		longitude : row.find('.coor-td span').eq(1).html(),
 		shift : row.find('.shift-td').html(),
 		date : row.find('.date-td').html(),
@@ -111,7 +130,7 @@ function extractArgFromRow(row) {
 
 function extractArgFromForm() {
 	return {
-		'unique_squirrel_id' : $('#usid-input').val(),
+		unique_squirrel_id : $('#usid-input').val(),
 		latitude : $('#lat-input').val(),
 		longitude : $('#lon-input').val(),
 		shift : $('#shift-select option:selected').text(),
@@ -137,8 +156,3 @@ function extractArgFromForm() {
 	}
 }
 
-function formatArgs(args) {
-	const months = ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May.',
-	'Jun.', 'Jul.', 'Aug.', 'Sep.', 'Oct.', 'Nov.', 'Dec.'];
-	
-}

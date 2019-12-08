@@ -33,14 +33,40 @@ return '<tr>' +
 '</tr>';
 }
 
-function createSuccessRow() {
+function fillForm(args) {
+	$('#usid-input').val(args.unique_squirrel_id);
+        $('#lat-input').val(args.latitude);
+        $('#lon-input').val(args.longitude);
+        $('#shift-select').val(args.shift);
+        $('#date-input').val(args.date);
+        $('#age-select').val(args.age);
+        $('#pfc-select').val(args.primary_fur_color);
+        $('#loc-select').val(args.location);
+        $('#sloc-input').val(args.specific_location);
+        $('#run-check').prop('checked', args.running);
+        $('#chase-check').prop('checked', args.chasing);
+        $('#climb-check').prop('checked', args.climbing);
+        $('#eat-check').prop('checked', args.eating);
+        $('#forage-check').prop('checked', args.foraging);
+        $('#other-input').val(args.other_activities);
+        $('#kuks-check').prop('checked', args.kuks);
+        $('#quaas-check').prop('checked', args.quaas);
+        $('#moans-check').prop('checked', args.moans);
+        $('#flag-check').prop('checked', args.tail_flags);
+        $('#twitch-check').prop('checked', args.tail_twitches);
+        $('#approach-check').prop('checked', args.approaches);
+        $('#indiff-check').prop('checked', args.indifferent);
+        $('#run-from-check').prop('checked', args.runs_from);
+}
+
+function createSuccessRow(msg) {
 	return "<tr class='add-success-row aux-row aux-success-row'><td colspan=9 align='center'>" + 
             "<div class='alert alert-success' role='alert'>" + 
-                "<span>New record is added!</span>" +
+                "<span>" + msg + "</span>" +
             "</div></td><td colspan=15></td></tr>";
 }
 
-function createForm(form, update) {
+function createForm(update) {
 return '<form>' + 
 '  <div class="form-group row">' + 
 '      <div class="col-sm-6">' + 
