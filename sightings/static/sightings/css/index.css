@@ -1,0 +1,27 @@
+.main-container {
+	width: 100%;
+	overflow: scroll;
+}
+
+table {
+	white-space: nowrap;
+}
+
+table .aux-row td {
+	background-color: #EEEEEE;
+}
+
+table .add-success-row td {
+	background-color: white;
+}
+
+/* fa-icons */
+.fa {
+	color: #CCCCCC;
+	cursor: pointer;
+}
+
+.fa:hover {
+	color: #222222;
+}
+

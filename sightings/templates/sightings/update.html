@@ -1,0 +1,9 @@
+<style>
+.helptext {
+	display: none;
+}
+</style>
+<form action="/sightings/add" method="POST">{% csrf_token %}
+        {{ form }}
+	<input class="btn btn-primary m-r-5 m-b-5" type="submit" value="submit">
+</form>

@@ -6,7 +6,7 @@ class Squirrel(models.Model):
     AM, PM = 'AM', 'PM'
     ADULT, JUVENILE, OTHER = 'Adult', 'Juvenile', 'Other'
     GRAY, CINNAMON, BLACK = 'Gray', 'Cinnamon', 'Black'
-    GROUND, ABOVE = 'Ground', 'Above'
+    GROUND, ABOVE = 'Ground Plane', 'Above Plane'
     SHIFT_CHOICE = [
             (AM, 'AM'),
             (PM, 'PM'),
